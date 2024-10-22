@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.entry {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 20px;
+    background-color: #301bee;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Verdana', sans-serif;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1a0dab;
+}
+
+#txtBienvenida {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.txt {
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #333;
+}
