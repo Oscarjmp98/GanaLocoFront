@@ -149,8 +149,28 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     accent-color: #2ce9f0; /* Cambia el color del checkbox cuando está seleccionado */
 }
+/*-----------------------------------------------------------------------*/
+/* Estilos para el botón de mostrar/ocultar contraseña */
+.password-toggle-button {
+    background-color: #f0f0f0; /* Fondo claro */
+    border: none; /* Sin borde */
+    border-radius: 50%; /* Botón redondo */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de mano */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+}
 
-label:hover {
-    color: #301bee; /* Cambia el color del texto al pasar el cursor */
+.password-toggle-button:hover {
+    background-color: #e0e0e0; /* Fondo más oscuro al pasar el ratón */
+}
+
+.password-toggle-button:focus {
+    outline: none; /* Sin borde de enfoque */
+    box-shadow: 0 0 0 2px #007bff; /* Sombra azul al enfocar */
+}
+
+.password-toggle-button i {
+    color: #007bff; /* Color del ícono */
+    font-size: 16px; /* Tamaño del ícono */
 }
 

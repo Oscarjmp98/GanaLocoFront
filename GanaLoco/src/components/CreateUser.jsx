@@ -1,6 +1,7 @@
 import './styles/CreateUser.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
 
 function CreateUser() {
@@ -22,7 +23,7 @@ function CreateUser() {
         setSuccessMessage('');
 
         try {
-            const response = await axios.post('http://localhost:5000/createUser', {
+            const response = await axios.post('http://localhost:5000/v1/routes/createUser', {
                 username,
                 password,
                 nombre,
@@ -108,11 +109,14 @@ function CreateUser() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        <button type="button" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? "Ocultar" : "Mostrar"} Contraseña
+                       <button type="button" className="password-toggle-button" onClick={() => setShowPassword(!showPassword)}>
+                            <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}></i>
                         </button>
                     </div>
                     <button type="submit">Crear Usuario</button>
+                    <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
+                        Regresar
+                    </button>
                     {successMessage && <p className="success">{successMessage}</p>}
                     {errorMessage && <p className="error">{errorMessage}</p>}
                 </div>

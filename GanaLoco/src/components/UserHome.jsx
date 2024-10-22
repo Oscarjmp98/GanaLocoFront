@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function UserHome({ user }) {
     if (user !== "user" || !user) {
-        return <Navigate to="/" />
+        /*return <Navigate to="/" />*/
     }
     const home = useNavigate();
     const [textoSigno, setTextoSigno] = useState('');
