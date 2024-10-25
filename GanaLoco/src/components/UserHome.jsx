@@ -45,7 +45,7 @@ function UserHome() {
                     </button>
     {error && <p>{error}</p>}
   </form>
-  <table className="registro-codigos">
+  <table>
     <thead>
       <tr>
         <th>Código</th>
