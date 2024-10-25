@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles/UserHome.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function UserHome() {
   const [code, setCode] = useState('');
   const [codes, setCodes] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
