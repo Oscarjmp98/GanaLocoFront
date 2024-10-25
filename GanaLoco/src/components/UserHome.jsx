@@ -35,11 +35,11 @@ function UserHome() {
     <div>
   <h1>Registro de Códigos</h1>
   <form onSubmit={handleSubmit}>
-    <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
+    <input type="text" value={code} onChange={(e) => setCode(e.target.value)}required/>
     <button type="submit">Registrar</button>
-    <button id="btnhome" type="button" onClick={() => navigate('/')}>
-                    Volver a Inicio
-                </button>
+    <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
+                        Regresar
+                    </button>
     {error && <p>{error}</p>}
   </form>
   <table className="registro-codigos">
