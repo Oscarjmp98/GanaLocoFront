@@ -19,7 +19,7 @@ function LoginUser() {
             });
 
             if (!response.ok) {
-                throw new Error('Usuario o contraseña invalida');
+                throw new Error('Usuario o contraseña invalida !');
             }
 
             const data = await response.json();
@@ -32,7 +32,7 @@ function LoginUser() {
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Error en la solicitud: Lol ' + error.message);
+            alert('Error en la solicitud:' + error.message);
         }
     };
 
