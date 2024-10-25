@@ -19,7 +19,7 @@ function LoginUser() {
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok :P');
+                throw new Error('Usuario o contraseña invalida');
             }
 
             const data = await response.json();
