@@ -3,6 +3,79 @@ import axios from 'axios';
 import './styles/UserHome.css';
 import { useNavigate } from 'react-router-dom';
 
+function UserHome() {
+  const [code, setCode] = useState('');
+  const [codes, setCodes] = useState([]);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://gana-loco-back-end.vercel.app/v1/routes/Registrar', { code });
+      setCodes([...codes, response.data]);
+      setCode('');
+      setError('');
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchCodes = async () => {
+      try {
+        const response = await axios.get('https://gana-loco-back-end.vercel.app/v1/routes/Codigos');
+        setCodes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCodes();
+  }, []);
+
+  return (
+    <div className="container">
+      <h1>Registro de Códigos</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          required
+        />
+        <button type="submit" id="btnCreateUser">Registrar</button>
+        <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
+          Regresar
+        </button>
+        {error && <p>{error}</p>}
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Ganador</th>
+          </tr>
+        </thead>
+        <tbody>
+          {codes.map((code) => (
+            <tr key={code._id}>
+              <td>{code.code}</td>
+              <td>{code.fecha}</td>
+              <td>{code.Ganador ? 'Sí' : 'No'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default UserHome;
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './styles/UserHome.css';
+import { useNavigate } from 'react-router-dom';
 
 function UserHome() {
   const [code, setCode] = useState('');
@@ -35,39 +108,45 @@ function UserHome() {
   }, []);
 
   return (
-    <div>
-  <h1>Registro de Códigos</h1>
-  <form onSubmit={handleSubmit}>
-    <input type="text" value={code} onChange={(e) => setCode(e.target.value)}required/>
-    <button type="submit"id="btnCreateUser">Registrar</button>
-    <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
-                        Regresar
-                    </button>
-    {error && <p>{error}</p>}
-  </form>
-  <table>
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Fecha</th>
-        <th>Ganador</th>
-      </tr>
-    </thead>
-    <tbody>
-      {codes.map((code) => (
-        <tr key={code._id}>
-          <td>{code.code}</td>
-          <td>{code.fecha}</td>
-          <td>{code.Ganador ? 'Sí' : 'No'}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-  )
+    <div className="container">
+      <h1>Registro de Códigos</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          required
+        />
+        <button type="submit" id="btnCreateUser">Registrar</button>
+        <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
+          Regresar
+        </button>
+        {error && <p>{error}</p>}
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Ganador</th>
+          </tr>
+        </thead>
+        <tbody>
+          {codes.map((code) => (
+            <tr key={code._id}>
+              <td>{code.code}</td>
+              <td>{code.fecha}</td>
+              <td>{code.Ganador ? 'Sí' : 'No'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default UserHome;
+
 /*import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UserHome.css';
 import TextSigno from "./TextSigno.jsx";
