@@ -32,14 +32,14 @@ function UserHome() {
   }, []);
 
   return (
-    <div className="registro-codigos">
+    <div>
   <h1>Registro de Códigos</h1>
   <form onSubmit={handleSubmit}>
     <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
     <button type="submit">Registrar</button>
     {error && <p>{error}</p>}
   </form>
-  <table>
+  <table className="registro-codigos">
     <thead>
       <tr>
         <th>Código</th>
