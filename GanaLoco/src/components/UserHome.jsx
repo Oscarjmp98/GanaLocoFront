@@ -1,77 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './styles/UserHome.css';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
-function UserHome() {
-  const [code, setCode] = useState('');
-  const [codes, setCodes] = useState([]);
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+export default function UserHome() {
+  const [code, setCode] = useState('')
+  const [codes, setCodes] = useState([])
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await axios.post('https://gana-loco-back-end.vercel.app/v1/routes/Registrar', { code });
-      setCodes([...codes, response.data]);
-      setCode('');
-      setError('');
+      const response = await axios.post('https://gana-loco-back-end.vercel.app/v1/routes/Registrar', { code })
+      setCodes([...codes, response.data])
+      setCode('')
+      setError('')
     } catch (error) {
-      setError(error.response.data.message);
+      setError(error.response.data.message)
     }
-  };
+  }
 
   useEffect(() => {
     const fetchCodes = async () => {
       try {
-        const response = await axios.get('https://gana-loco-back-end.vercel.app/v1/routes/Codigos');
-        setCodes(response.data);
+        const response = await axios.get('https://gana-loco-back-end.vercel.app/v1/routes/Codigos')
+        setCodes(response.data)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    };
-    fetchCodes();
-  }, []);
+    }
+    fetchCodes()
+  }, [])
 
   return (
-    <div className="container">
-      <h1>Registro de Códigos</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          required
-        />
-        <button type="submit" id="btnCreateUser">Registrar</button>
-        <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
-          Regresar
-        </button>
-        {error && <p>{error}</p>}
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Fecha</th>
-            <th>Ganador</th>
-          </tr>
-        </thead>
-        <tbody>
-          {codes.map((code) => (
-            <tr key={code._id}>
-              <td>{code.code}</td>
-              <td>{code.fecha}</td>
-              <td>{code.Ganador ? 'Sí' : 'No'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="min-h-screen bg-purple-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-3xl font-bold text-center text-purple-800 mb-6">Registro de Códigos</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex gap-4">
+            <Input
+              type="text"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              required
+              placeholder="Ingrese el código"
+              className="flex-1 border-purple-300 focus:border-purple-500 focus:ring-purple-500"
+            />
+            <Button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white">
+              Registrar
+            </Button>
+          </div>
+          <Button
+            type="button"
+            onClick={() => window.history.back()}
+            className="w-full bg-gray-200 hover:bg-gray-300 text-black"
+          >
+            Regresar
+          </Button>
+          {error && <p className="text-red-500 font-bold">{error}</p>}
+        </form>
+        <div className="overflow-x-auto mt-8">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-purple-200">
+                <th className="p-3 text-left font-bold text-purple-800">Código</th>
+                <th className="p-3 text-left font-bold text-purple-800">Fecha</th>
+                <th className="p-3 text-left font-bold text-purple-800">Ganador</th>
+              </tr>
+            </thead>
+            <tbody>
+              {codes.map((code, index) => (
+                <tr key={code._id} className={index % 2 === 0 ? 'bg-white' : 'bg-purple-50'}>
+                  <td className="p-3 border-t border-purple-100">{code.code}</td>
+                  <td className="p-3 border-t border-purple-100">{code.fecha}</td>
+                  <td className="p-3 border-t border-purple-100">{code.Ganador ? 'Sí' : 'No'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
-
-export default UserHome;
 
 
 
