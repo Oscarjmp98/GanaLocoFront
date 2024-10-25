@@ -36,7 +36,7 @@ function UserHome() {
   <h1>Registro de Códigos</h1>
   <form onSubmit={handleSubmit}>
     <input type="text" value={code} onChange={(e) => setCode(e.target.value)}required/>
-    <button type="submit">Registrar</button>
+    <button type="submit"id="btnCreateUser">Registrar</button>
     <button type="button" id="btnCreateUser" onClick={() => navigate('/')}>
                         Regresar
                     </button>
