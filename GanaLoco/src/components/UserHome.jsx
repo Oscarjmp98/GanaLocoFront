@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './styles/UserHome';
 
 function UserHome() {
   const [code, setCode] = useState('');
@@ -31,33 +32,33 @@ function UserHome() {
   }, []);
 
   return (
-    <div>
-      <h1>Registro de Códigos</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
-        <button type="submit">Registrar</button>
-        {error && <p>{error}</p>}
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Fecha</th>
-            <th>Ganador</th>
-          </tr>
-        </thead>
-        <tbody>
-          {codes.map((code) => (
-            <tr key={code._id}>
-              <td>{code.code}</td>
-              <td>{code.fecha}</td>
-              <td>{code.Ganador ? 'Sí' : 'No'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+    <div className="registro-codigos">
+  <h1>Registro de Códigos</h1>
+  <form onSubmit={handleSubmit}>
+    <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
+    <button type="submit">Registrar</button>
+    {error && <p>{error}</p>}
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fecha</th>
+        <th>Ganador</th>
+      </tr>
+    </thead>
+    <tbody>
+      {codes.map((code) => (
+        <tr key={code._id}>
+          <td>{code.code}</td>
+          <td>{code.fecha}</td>
+          <td>{code.Ganador ? 'Sí' : 'No'}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+  )
 }
 
 export default UserHome;
