@@ -52,7 +52,7 @@ function createAdmin() {
                         <input
                             type="text"
                             id="inputUsername"
-                            placeholder="Nombre de usuario"
+                            placeholder="Correo"
                             onChange={(e) => setUsername(e.target.value)}
                             required
                         />

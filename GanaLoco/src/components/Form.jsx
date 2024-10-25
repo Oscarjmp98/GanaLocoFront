@@ -52,7 +52,7 @@ function LoginUser() {
                 Crear Usuario
             </button>
             <button type="button" id="btnCreateUser" onClick={() => navigate('/createAdmin')}>
-                Crear Usuario
+                Crear Admin
             </button>
         </form>
     );
