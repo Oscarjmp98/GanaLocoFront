@@ -56,8 +56,6 @@ function UserHome() {
     <tbody>
       {codes.map((code) => (
         <tr key={code._id}>
-          <td>{code.user.nombre}</td>
-          <td>{code.user.username}</td>
           <td>{code.code}</td>
           <td>{code.fecha}</td>
           <td>{code.Ganador ? 'Sí' : 'No'}</td>
