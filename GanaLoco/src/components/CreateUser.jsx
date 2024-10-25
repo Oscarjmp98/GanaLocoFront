@@ -23,7 +23,7 @@ function CreateUser() {
         setSuccessMessage('');
 
         try {
-            const response = await axios.post('http://localhost:5000/v1/routes/createUser', {
+            const response = await axios.post('https://gana-loco-back-end.vercel.app/v1/routes/createUser', {
                 username,
                 password,
                 nombre,

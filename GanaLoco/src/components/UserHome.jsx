@@ -9,7 +9,7 @@ function UserHome() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/v1/routes/Registrar', { code });
+      const response = await axios.post('https://gana-loco-back-end.vercel.app/v1/routes/Registrar', { code });
       setCodes([...codes, response.data]);
       setCode('');
       setError('');
@@ -21,7 +21,7 @@ function UserHome() {
   useEffect(() => {
     const fetchCodes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/v1/routes/Codigos');
+        const response = await axios.get('https://gana-loco-back-end.vercel.app/v1/routes/Codigos');
         setCodes(response.data);
       } catch (error) {
         console.error(error);
