@@ -37,6 +37,9 @@ function UserHome() {
   <form onSubmit={handleSubmit}>
     <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
     <button type="submit">Registrar</button>
+    <button id="btnhome" type="button" onClick={() => navigate('/')}>
+                    Volver a Inicio
+                </button>
     {error && <p>{error}</p>}
   </form>
   <table className="registro-codigos">
