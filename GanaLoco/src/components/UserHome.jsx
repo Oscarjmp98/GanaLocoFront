@@ -50,7 +50,7 @@ function UserHome() {
           {codes.map((code) => (
             <tr key={code._id}>
               <td>{code.code}</td>
-              <td>{code.date}</td>
+              <td>{code.fecha}</td>
               <td>{code.Ganador ? 'Sí' : 'No'}</td>
             </tr>
           ))}
