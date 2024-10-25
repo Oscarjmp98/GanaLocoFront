@@ -1,4 +1,4 @@
-body {
+/*body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,4 +53,55 @@ button:hover {
 .txt {
     font-family: 'Trebuchet MS', sans-serif;
     color: #333;
+}*/
+
+/* Form.css */
+body {
+    background-image: url('https://img.freepik.com/psd-gratis/representacion-3d-podio-ventas-metaverso-futurista_23-2150277188.jpg?t=st=1729576787~exp=1729580387~hmac=7b761bb7866951538708fd334fff9e85eea1ed974233e1094659947770fcdda2&w=740');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+}
+
+h1#txtBienvenida {
+    text-align: center;
+    color: #333;
+}
+
+h4.txt {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input.entry {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #2c0949;
+    border-radius: 5px;
+}
+
+button#btnCreateUser {
+    width: 100%;
+    padding: 10px;
+    background-color: #9945dd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button#btnCreateUser:hover {
+    background-color: #9945dd;
 }

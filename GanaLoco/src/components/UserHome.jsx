@@ -1,11 +1,74 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function UserHome() {
+  const [code, setCode] = useState('');
+  const [codes, setCodes] = useState([]);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/v1/routes/Registrar', { code });
+      setCodes([...codes, response.data]);
+      setCode('');
+      setError('');
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchCodes = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/v1/routes/Codigos');
+        setCodes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCodes();
+  }, []);
+
+  return (
+    <div>
+      <h1>Registro de Códigos</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
+        <button type="submit">Registrar</button>
+        {error && <p>{error}</p>}
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Ganador</th>
+          </tr>
+        </thead>
+        <tbody>
+          {codes.map((code) => (
+            <tr key={code._id}>
+              <td>{code.code}</td>
+              <td>{new Date(code.date).toLocaleDateString()}</td>
+              <td>{code.Ganador ? 'Sí' : 'No'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default UserHome;
+/*import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UserHome.css';
 import TextSigno from "./TextSigno.jsx";
 import { useState } from "react";
 
 function UserHome({ user }) {
     if (user !== "user" || !user) {
-        /*return <Navigate to="/" />*/
+        /*return <Navigate to="/" />
     }
     const home = useNavigate();
     const [textoSigno, setTextoSigno] = useState('');
@@ -64,4 +127,4 @@ function UserHome({ user }) {
     )
 }
 
-export default UserHome;
+export default UserHome;*/
