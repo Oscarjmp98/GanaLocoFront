@@ -34,7 +34,7 @@ function UserHome() {
   }, []);
 
   return (
-    <div >
+    <div className="container">
       <h1>Registro de Códigos</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -49,7 +49,7 @@ function UserHome() {
         </button>
         {error && <p>{error}</p>}
       </form>
-      <table className="container">
+      <table >
         <thead>
           <tr>
             <th>Código</th>
