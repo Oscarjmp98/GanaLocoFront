@@ -34,7 +34,7 @@ function UserHome() {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <h1>Registro de Códigos</h1>
       <form onSubmit={handleSubmit}>
         <input
